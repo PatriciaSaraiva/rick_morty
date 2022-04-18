@@ -1,7 +1,8 @@
 import axios from 'axios'
 import React, { useState, useEffect } from 'react'
-import Character from './Character';
+import Character from './Character'
 import SearchBar from './SearchBar'
+import AddCharacterForm from './AddCharacterForm'
 
 
 function CharacterList() {
@@ -26,6 +27,10 @@ function CharacterList() {
             .then(response => setCharacters(response.data.results))
     }
 
+    const addNewCharacter = (e) => {
+        e.preventDefault()
+    }
+
     const displayCharacters = characters.map(character =>
         <Character {...character} />)
 
@@ -41,6 +46,7 @@ function CharacterList() {
             </div>
 
             <div className="characterList">
+                <AddCharacterForm addNewCharacter={addNewCharacter} />
                 {displayCharacters}
             </div>
         </div>
