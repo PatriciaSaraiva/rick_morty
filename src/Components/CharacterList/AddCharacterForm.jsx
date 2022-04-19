@@ -1,27 +1,27 @@
 import React, { useState } from 'react';
 
-
 function AddCharacterForm(props) {
-    // const { name, setName } = useState('')
-    // const { status, setStatus } = useState('')
-    // const { image, setImage } = useState('')
-    const [state, setState] = useState(
+
+    const [newCharacter, setNewCharacter] = useState(
         {
             name: '',
             status: '',
-            image: '',
+            species: '',
+            image: ''
         }
     )
     const handleChange = (e) => {
-        const newValue = e.target.value
-        const newName = e.target.name
-        setState({ [newName]: newValue })
+        const value = e.target.value
+        const name = e.target.name
+        setNewCharacter({...newCharacter, [name]: value })
     }
+
+    console.log(newCharacter)
 
     const { addNewCharacter } = props
     return (
         <div>
-            <form onSubmit={(e) => { addNewCharacter(e) }}>
+            <form onSubmit={(e) => { addNewCharacter(e,newCharacter) }}>
 
                 <label for='name'>Name</label>
                 <input name='name' id='name' type='text' placeholder='name' onChange={handleChange} /><br />
@@ -29,6 +29,9 @@ function AddCharacterForm(props) {
 
                 <label for='status'>Status</label>
                 <input name='status' id='status' type='text' placeholder='status' onChange={handleChange} /><br />
+
+                <label for='species'>Species</label>
+                <input name='species' id='species' type='text' placeholder='species' onChange={handleChange} /><br />
 
 
                 <label for='image'>Image</label>

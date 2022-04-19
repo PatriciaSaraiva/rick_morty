@@ -13,7 +13,6 @@ function CharacterList() {
         axios
             .get('https://rickandmortyapi.com/api/character')
             .then(response => setCharacters(response.data.results))
-        console.log(characters)
     }
 
     useEffect(() => {
@@ -27,9 +26,14 @@ function CharacterList() {
             .then(response => setCharacters(response.data.results))
     }
 
-    const addNewCharacter = (e) => {
+    const addNewCharacter = (e, newCharacter) => {
+        console.log(newCharacter)
         e.preventDefault()
+        setCharacters([newCharacter, ...characters])
+
     }
+    console.log(characters)
+
 
     const displayCharacters = characters.map(character =>
         <Character {...character} />)
