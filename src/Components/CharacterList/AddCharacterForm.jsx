@@ -13,7 +13,7 @@ function AddCharacterForm(props) {
     const handleChange = (e) => {
         const value = e.target.value
         const name = e.target.name
-        setNewCharacter({...newCharacter, [name]: value })
+        setNewCharacter({ ...newCharacter, [name]: value })
     }
 
     console.log(newCharacter)
@@ -21,7 +21,7 @@ function AddCharacterForm(props) {
     const { addNewCharacter } = props
     return (
         <div>
-            <form onSubmit={(e) => { addNewCharacter(e,newCharacter) }}>
+            <form onSubmit={(e) => { addNewCharacter(e, newCharacter) }}>
 
                 <label for='name'>Name</label>
                 <input name='name' id='name' type='text' placeholder='name' onChange={handleChange} /><br />
